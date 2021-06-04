@@ -1,0 +1,158 @@
+.a {
+  position: relative;
+}
+
+.img {
+  background-image: url(bradcam4.png);
+  background-size: cover;
+  background-position: bottom;
+  position: relative;
+}
+
+div.img:before {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(255, 255, 255, 0.25)),
+    color-stop(80.23%, #fff)
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(255, 255, 255, 0.25) 0%,
+    #fff 80.23%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(255, 255, 255, 0.25) 0%,
+    #fff 80.23%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    #fff 80.23%
+  );
+  opacity: 1;
+}
+
+.img:before {
+  background-color: #000;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+}
+#thongtin img {
+  width: 100%;
+  height: auto;
+}
+.col-md-6 img {
+  width: 100%;
+  height: auto;
+}
+.tour-nav-tabs {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  position: relative;
+  opacity: 100;
+}
+
+.tour-nav-tabs .nav-tabs {
+  border-top: 1px solid #f68c05;
+  border-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.tour-nav-tabs .nav-tabs .nav-item .nav-link.active {
+  background: #f68c05;
+  color: #fff;
+}
+
+.tour-nav-tabs .nav-tabs .nav-item .nav-link {
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  color: #212c64;
+  font-weight: 500;
+  padding: 15px 30px;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.tour-name {
+  font-size: 20px;
+}
+
+.ratings span {
+  margin-right: 20px;
+}
+
+.tour-price {
+  font-size: 18px;
+  color: red;
+}
+.rating_days span {
+  font-size: 12px;
+  color: #fdae5c;
+}
+
+.rating_days span a {
+  font-size: 14px;
+  color: #7a838b;
+  margin-left: 5px;
+}
+
+.rating_days .days {
+  font-size: 14px;
+  font-weight: 400;
+  color: #7a838b;
+}
+
+.rating_days .days i {
+  margin-right: 8px;
+}
+.rating_days .days a {
+  font-size: 14px;
+  color: #7a838b;
+}
+
+.gallery-wrap {
+  -webkit-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 30px;
+  column-gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.gallery-wrap li {
+  display: inline-block;
+  margin-bottom: 30px;
+  line-height: 1;
+  overflow: hidden;
+}
+.gallery-wrap li img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center center;
+  object-position: center center;
+  height: 350px;
+  -webkit-transition: 500ms all;
+  -o-transition: 500ms all;
+  transition: 500ms all;
+  width: 100%;
+}
+.gallery-wrap li:nth-child(2n+1) img {
+  height: 450px;
+}
+.gallery-wrap li img:hover {
+  transform: scale(1.2)
+}

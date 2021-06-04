@@ -1,0 +1,90 @@
+<h2>Danh sách tài khoản</h2>
+<% flash.each do |key, value| %>
+<div class="row">
+    <div class="col">
+        <div class="alert alert-<%= key %>">
+            <%= value %>
+        </div>
+    </div>
+</div>
+<% end %>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Người đặt</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Tour</th>
+                            <th>Ghi chú</th>
+                            <th>Thời gian đặt</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @order.each do |item| -%>
+                        <tr>
+                            <td><%= item.id %></td>
+                            <td><%= item.user.name %></td>
+                            <td><%= item.phone %></td>
+                            <td><%= item.email %></td>
+                            <td><%= item.tour.name %></td>
+                            <td><%= item.note %></td>
+                            <td><%= item.created_at %></td>
+                            <td>
+                                <% if item.status==0 %>
+                                   <span class="badge badge-secondary">Đang chờ xử lý</span>
+                                <% elsif item.status==1 %>
+                                  <span class="badge badge-success">Đã xác nhận</span>
+                                <% else %>
+                                   <span class="badge badge-danger">Đã hủy</span>
+                                <% end %>
+                             </td>
+                            <td>
+                                <%=link_to confirm_order_path(:id => item.id), :class=> 'btn btn-outline-info' do %>
+                                    <i class="far fa-check-circle"></i>
+                                <% end %>
+                                <%=link_to cancel_order_path(:id => item.id), :class=> 'btn btn-outline-danger' do %>
+                                    <i class="fas fa-window-close"></i>
+                                <% end %>
+                            </td>
+                        </tr>
+                        <% end %>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <div class="col-12">
+        <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+</div>
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 2500);
+</script>

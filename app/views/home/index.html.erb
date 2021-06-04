@@ -1,0 +1,201 @@
+<%= stylesheet_link_tag 'main' %>
+<header>
+	<div id="demo" class="carousel slide" data-ride="carousel" data-interval="1700">
+		<ol class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0" class="active"></li>
+			<li data-target="#demo" data-slide-to="1"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+			<li data-target="#demo" data-slide-to="3"></li>
+			<li data-target="#demo" data-slide-to="4"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="carousel-item active">
+				<%= image_tag ("Travel/banner1_2.jpg"), :class => "carou" %>
+			</div>
+			<div class="carousel-item">
+				<%= image_tag ("Travel/Banner3.jpg"), :class => "carou" %>
+			</div>
+			<div class="carousel-item">
+				<%= image_tag ("Travel/banner2_2.jpg"), :class => "carou" %>
+			</div>
+			<div class="carousel-item">
+				<%= image_tag ("Travel/Carousel1.jpg"), :class => "carou" %>
+			</div>
+			<div class="carousel-item">
+				<%= image_tag ("Travel/banner3_2.jpg"), :class => "carou" %>
+			</div>
+			<a href="#demo" class="carousel-control-prev" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a href="#demo" class="carousel-control-next" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+	</div>
+</header>
+<div class="container-fluid">
+	<div id="review">
+		
+		<div class="row text-center">
+			<div class="col-md-3 wow bounceInLeft">
+				<div class="card mb-4">
+					<div class="card-img-top"><%= image_tag ("Logo/place.png") %></div>
+					<div class="card-body">Những địa điểm du lịch nổi tiếng</div>
+				</div>
+			</div>
+			<div class="col-md-3 wow bounceInDown">
+				<div class="card mb-4">
+					<div class="card-img-top"><%= image_tag ("Logo/tour.png") %></div>
+					<div class="card-body">Những tour du lịch giá rẻ hấp dẫn</div>					
+				</div>
+			</div>
+			<div class="col-md-3 wow bounceInDown">
+				<div class="card mb-4">
+					<div class="card-img-top"><%= image_tag ("Logo/car.png")%></div>
+					<div class="card-body">Dịch vụ cho thuê xe du lịch giá rẻ, uy tín</div>
+				</div>
+			</div>
+			<div class="col-md-3 wow bounceInRight">
+				<div class="card mb-4">
+					<div class="card-img-top"><%= image_tag ("Logo/supp.png")%></div>
+					<div class="card-body">Hỗ trợ khách hàng tận tình, nhanh chóng</div>
+				</div>
+			</div>
+			<div class="mx-auto d-block wow bounceInUp" data-wow-delay="0.1s">
+				<%= image_tag ("Travel/mapvn.png")%>
+			</div>
+		</div>
+	</div>
+    <div class="popular_destination_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Điểm đến yêu thích</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <%= image_tag ("Place/vlh.jpg") %>
+                        </div>
+                        <div class="content">
+                            <%= link_to place_path do%>
+                                <p class="d-flex align-items-center">Quảng Bình  </p>
+                            <% end %>        
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <%= image_tag ("Place/vlh.jpg") %>
+                        </div>
+                        <div class="content">
+                            <p class="d-flex align-items-center">Vịnh Hạ Long <a href="travel_destination.html">  03 Places</a> </p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <%= image_tag ("Place/dan.jpg") %>
+                        </div>
+                        <div class="content">
+                            <p class="d-flex align-items-center">Đà Nẵng <a href="travel_destination.html">  10 Places</a> </p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="popular_places_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Tour du lịch HOT</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                
+                <% @tour.each do |item| %>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_place">
+                            <div class="thumb">
+                                <%= image_tag (item.img.url) if item.img? %>
+                                <p class="prise"><%= number_to_currency(item.price, unit: "", precision: 0) %> VND</p>
+                            </div>
+                            <div class="place_info">
+                                <%= link_to tour_detail_path(:tour_id => item.id) do %>
+                                    <h3><%= item.name %></h3>
+                                <% end %>
+                                <p><%= item.category.name %></p>
+                                <div class="rating_days d-flex justify-content-between">
+                                    <span class="d-flex justify-content-center align-items-center">
+                                      <% for a in 1..item.rating %>
+                                        <i class="fa fa-star"></i>
+                                      <% end %>
+                                      <% for a in 1..(5-item.rating) %>
+                                        <i class="fa fa-star-o"></i>
+                                      <% end %>
+                                        <a href="#">(20 Review)</a>
+                                    </span>
+                                    <div class="days">
+                                        <i class="far fa-clock"></i>
+                                        <a href="#"><%= item.day %> Ngày</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="more_place_btn text-center">
+                        <a class="boxed-btn4" href="<%= tour_path%>">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="recent_trip_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Tin tức du lịch</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            
+            <% @blog.each do |item| %>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_trip">
+                        <div class="thumb">
+                            <%= image_tag item.img.url %>
+                        </div>
+                        <div class="info">
+                            <div class="date">
+                                <span><%= item.updated_at.strftime("%d tháng %m, %Y")%></span>
+                            </div>
+                            <a href="<%= blog_detail_path(:blog_id => item.id)%>">
+                                <h3><%= item.title%></h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+                
+            </div>
+        </div>
+    </div>
