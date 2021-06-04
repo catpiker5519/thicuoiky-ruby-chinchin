@@ -1,10 +1,10 @@
 # Ruby on Rails
 
-Nhóm 15: Trần Quang Đạt - Đặng Quang Tài - Phan Trung Thắng
+Đinh Duy Minh, Thái Thị Thúy Nhi, Nguyễn Đại Ngộ, Trần Thị Quỳnh Giao, Ngô Viết Quang
 
 ## Cài đặt  
 ``` bash
-git clone https://github.com/xauuu/ruby.git
+git clone https://github.com/catpiker5519/thicuoiky-ruby-chinchin.git
 ```
 ``` bash
 bundle install
